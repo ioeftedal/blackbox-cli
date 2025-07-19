@@ -19,12 +19,12 @@ struct BlackBoxCLI: AsyncParsableCommand {
     mutating func run() async throws {
         let cliSession = CLISession()
 
-        if interactive {
-            try await cliSession.chatLoop()
-        } else if let filePath = file {
-
+        if let filePath = file {
             try await processFile(filePath)
+            return
         }
+        // We default to chatLoop
+        try await cliSession.chatLoop()
     }
 
     private func processFile(_ path: String) async throws {
