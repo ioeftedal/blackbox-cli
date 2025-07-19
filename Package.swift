@@ -5,19 +5,18 @@ let package = Package(
     name: "blackbox-cli",
     platforms: [.macOS(.v26)],
     products: [
-        .executable(name: "blackbox-cli", targets: ["blackbox-cli"])
+        .executable(name: "blackbox", targets: ["BlackBoxCLI"])
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-argument-parser", from: "1.6.1")
-
     ],
     targets: [
         .executableTarget(
-            name: "blackbox-cli",
+            name: "BlackBoxCLI",
             dependencies: [
                 .product(name: "ArgumentParser", package: "swift-argument-parser")
-
-            ]
+            ],
+            path: "Sources/BlackBoxCLI"
         )
     ]
 )
